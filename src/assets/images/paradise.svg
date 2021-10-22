@@ -1,0 +1,18 @@
+<svg width="96" height="96" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="a">
+            <stop stop-color="#FFF" offset="0%"/>
+            <stop stop-color="#F2FAFA" offset="100%"/>
+        </linearGradient>
+    </defs>
+    <g fill-rule="nonzero" fill="none">
+        <circle fill="#058E8F" opacity=".1" cx="48" cy="48" r="48"/>
+        <circle fill="url(#a)" opacity=".5" cx="28" cy="36" r="12"/>
+        <circle fill="url(#a)" opacity=".5" cx="73" cy="47" r="8"/>
+        <path d="M48 18v52H16c5.69-2.68 11.69-8.645 18-17.896C40.31 42.854 44.977 31.486 48 18zM48 18v52h32c-5.69-2.68-11.69-8.645-18-17.896C55.69 42.854 51.023 31.486 48 18z" fill="#058E8F"/>
+        <path fill="#FFF" d="m48 37 3.357 17.627L54 70h-7z"/>
+        <path d="M48 34v36H33c2.667-1.855 5.48-5.985 8.438-12.39C44.395 51.208 46.582 43.338 48 34z" fill="#FFF"/>
+        <path d="M48 34.04c-.438 12.059-.12 20.182.952 24.37 1.073 4.19 2.537 8.052 4.391 11.59H64c-2.753-1.855-5.656-5.985-8.71-12.39-3.053-6.403-5.483-14.26-7.29-23.57z" fill="#FFBF00"/>
+        <path fill="#FF8C00" d="m57.343 20.657-10-10v10z"/>
+    </g>
+</svg>

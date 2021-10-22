@@ -1,0 +1,28 @@
+<svg width="88" height="88" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <circle id="a" cx="44" cy="44" r="44"/>
+        <rect id="c" x="0" y="0" width="10" height="36" rx="5"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <mask id="b" fill="#fff">
+            <use xlink:href="#a"/>
+        </mask>
+        <use fill="#058E8F" fill-rule="nonzero" opacity=".1" xlink:href="#a"/>
+        <g mask="url(#b)">
+            <g transform="translate(15 20)">
+                <g transform="translate(8 6)">
+                    <mask id="d" fill="#fff">
+                        <use xlink:href="#c"/>
+                    </mask>
+                    <use fill="#35353E" fill-rule="nonzero" xlink:href="#c"/>
+                    <rect fill="#FFF" fill-rule="nonzero" opacity=".1" mask="url(#d)" y="-6" width="6" height="36" rx="3"/>
+                </g>
+                <rect fill="#35353E" fill-rule="nonzero" x="41" y="6" width="10" height="36" rx="5"/>
+                <rect fill="#FFF" fill-rule="nonzero" opacity=".1" x="41" width="6" height="36" rx="3"/>
+                <path fill="#35353E" fill-rule="nonzero" d="M18 21h23v6H18z"/>
+                <rect fill="#35353E" fill-rule="nonzero" y="12" width="8" height="24" rx="4"/>
+                <rect fill="#35353E" fill-rule="nonzero" x="51" y="12" width="8" height="24" rx="4"/>
+            </g>
+        </g>
+    </g>
+</svg>

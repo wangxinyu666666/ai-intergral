@@ -1,0 +1,16 @@
+<svg width="88" height="88" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <path d="M44.682.514c-9.69-2.075-9.69 4.497-16.958 4.497-7.267 0-7.267-6.918-16.957-4.497C1.077 2.935-3.768 34.76 3.499 34.76c7.268 0 12.113-8.994 24.225-8.994 12.113 0 16.958 8.994 24.225 8.994 7.268 0 2.423-31.824-7.267-34.245zm-23.88 17.987h-4.498v4.497h-4.845V18.5h-4.5v-4.497h4.5V9.508h4.499v4.496h4.845v4.497zm20.765 3.46c-3.115 0-5.883-2.422-5.883-5.881 0-3.46 2.768-5.535 5.883-5.535s5.883 2.422 5.883 5.88c0 3.46-2.768 5.535-5.883 5.535z" id="a"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <circle fill="#058E8F" fill-rule="nonzero" opacity=".1" cx="44" cy="44" r="44"/>
+        <g transform="translate(16 27)">
+            <mask id="b" fill="#fff">
+                <use xlink:href="#a"/>
+            </mask>
+            <use fill="#2A6CE1" fill-rule="nonzero" xlink:href="#a"/>
+            <circle fill="#FFF" fill-rule="nonzero" opacity=".3" mask="url(#b)" cx="48.5" cy="-5.741" r="29.5"/>
+        </g>
+        <circle fill="#FFDF00" fill-rule="nonzero" cx="57" cy="43" r="7"/>
+    </g>
+</svg>

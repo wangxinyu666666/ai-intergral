@@ -1,0 +1,28 @@
+<svg width="88" height="88" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <circle id="a" cx="44" cy="44" r="44"/>
+        <rect id="c" x="0" y="0" width="20" height="33" rx="2"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <mask id="b" fill="#fff">
+            <use xlink:href="#a"/>
+        </mask>
+        <use fill="#058E8F" fill-rule="nonzero" opacity=".1" xlink:href="#a"/>
+        <g mask="url(#b)">
+            <g transform="translate(22 22)">
+                <g transform="translate(19)">
+                    <mask id="d" fill="#fff">
+                        <use xlink:href="#c"/>
+                    </mask>
+                    <use fill="#FFDF00" fill-rule="nonzero" xlink:href="#c"/>
+                    <path fill="#FFBF00" fill-rule="nonzero" mask="url(#d)" d="M14 0h6v33h-6z"/>
+                </g>
+                <path d="M12 15h8v18H0v-6c0-6.627 5.373-12 12-12z" fill="#FFDF00" fill-rule="nonzero"/>
+                <circle fill="#FFF" fill-rule="nonzero" cx="8" cy="23" r="3"/>
+                <path fill="#FF8C00" fill-rule="nonzero" d="M8 33h4v7H8z"/>
+                <path d="M43 35c0 3.866-3.989 7-8.91 7H1" stroke="#FF8C00" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <path fill="#FF8C00" fill-rule="nonzero" d="M26 33h4v7h-4z"/>
+            </g>
+        </g>
+    </g>
+</svg>
