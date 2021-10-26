@@ -3,16 +3,17 @@
  * @Autor: Wangxinyu
  * @Date: 2021-10-18 17:01:51
  * @LastEditors: Wangxinyu
- * @LastEditTime: 2021-10-22 16:22:02
+ * @LastEditTime: 2021-10-23 08:45:26
  */
 import React from 'react'
 import Taro from '@tarojs/taro'
-import { View, Text, WebView } from '@tarojs/components'
+import { View, Text, Image } from '@tarojs/components'
 import { connect, useDispatch } from 'react-redux'
 import { AtTabs, AtTabsPane, AtFloatLayout } from 'taro-ui'
 import { ActivityActions } from './models'
 import { QRCode } from 'taro-code'
 import BottomBar from '@/components/BottomBar'
+import ActivityImage from '@/assets/images/activity-image.png'
 
 import './index.less';
 
@@ -29,7 +30,8 @@ const Activity = (props) =>{
 		})
 	}
 
-	const showCode = () => {
+	const showCode = (e) => {
+		e.stopPropagation()
 		dispatch({
 			type: ActivityActions.update,
 			payload: { ifShowCode: true }
@@ -44,7 +46,7 @@ const Activity = (props) =>{
 	}
 
 	const toDetail = () => {
-		Taro.navigateTo({
+		Taro.redirectTo({
 			url: '/pages/activity/detail?url=https://www.jianshu.com/p/e768cc7a871d'
 		})
 	}
@@ -55,7 +57,9 @@ const Activity = (props) =>{
 			<AtTabs current={current} tabList={tabList} onClick={handleClick}>
 				<AtTabsPane current={current} index={0} >
 					<View className="activity-item" onClick={toDetail}>
-						<View className="activity-header">
+						<Image className="activity-image" src={ActivityImage} />
+						<View className="activity-code" onClick={(e) => showCode(e)}>活动二维码</View>
+						{/* <View className="activity-header">
 							<Text>活动名称</Text>
 							<Text>已参加</Text>
 							<Text>预计可获得30积分</Text>
@@ -64,7 +68,7 @@ const Activity = (props) =>{
 						<View className="activity-time">活动时间：xxxxxxx</View>
 						<View className="activity-location">活动地址：xxxxxxx</View>
 						<View className="activity-count">已参加人数：xxxxxxx</View>
-						<View className="activity-code" onClick={showCode}>活动二维码</View>
+						<View className="activity-code" onClick={showCode}>活动二维码</View> */}
 					</View>
 				</AtTabsPane>
 			</AtTabs>

@@ -3,7 +3,7 @@
  * @Autor: Wangxinyu
  * @Date: 2021-10-15 15:25:45
  * @LastEditors: Wangxinyu
- * @LastEditTime: 2021-10-22 08:38:51
+ * @LastEditTime: 2021-10-22 23:50:29
  */
 import axios from "taro-axios";
 
@@ -122,5 +122,21 @@ function post(url, params) {
     });
 }
 
+/**
+ * post方法，对应put请求
+ * @param {String} url [请求的url地址]
+ * @param {Object} params [请求时携带的参数]
+ */
+ function put(url, params?) {
+    return new Promise((resolve, reject) => {
+        axios.put(`${url}`, params)
+            .then(res => {
+                resolve(res);
+            })
+            .catch(err => {
+                reject(err)
+            })
+    });
+}
 // 对外暴露
-export { post, get }
+export { post, get, put }

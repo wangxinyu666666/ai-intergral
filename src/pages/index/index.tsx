@@ -3,25 +3,23 @@
  * @Autor: Wangxinyu
  * @Date: 2021-10-15 17:14:03
  * @LastEditors: Wangxinyu
- * @LastEditTime: 2021-10-22 16:17:23
+ * @LastEditTime: 2021-10-23 11:32:28
  */
 import React, { useEffect, useState } from 'react';
 import Taro from '@tarojs/taro'
 import { View, Text, Swiper, SwiperItem, Image, ScrollView } from '@tarojs/components'
 import { connect, useDispatch } from 'react-redux'
-import { AtAvatar, AtTabs, AtTabsPane, AtButton, AtTabBar } from 'taro-ui'
+import { AtAvatar, AtTabs, AtTabsPane, AtButton } from 'taro-ui'
 import { IndexActions } from './models'
 import BottomBar from '@/components/BottomBar'
-import Association from '@/assets/images/association.svg'
-import Daily from '@/assets/images/daily.svg'
+import Association from '@/assets/images/association.png'
+import Daily from '@/assets/images/daily.png'
 import Paradise from '@/assets/images/paradise.svg'
 import Portrait from '@/assets/images/portrait.svg'
 import Star from '@/assets/images/star.svg'
 import Hollowstar from '@/assets/images/hollowstar.svg'
 import Tianluo from '@/assets/images/tianluo.svg'
-import Banner1 from '@/assets/images/banner1.jpeg'
-import Banner2 from '@/assets/images/banner2.jpeg'
-import Banner3 from '@/assets/images/banner3.jpeg'
+import GreenTianluo from '@/assets/images/green-tianluo.png'
 import './index.less'
 
 const tabList = [{ title: '田螺内购' }, { title: '外部商城' }]
@@ -30,7 +28,7 @@ const Index = (props) => {
 	const dispatch = useDispatch();
 	let [windowWidth, setWindowWidth] = useState(0);
 	let [goodsHeight, setGoodsHeight] = useState(0);
-	const { userName, userLevel, userIntergral, current, ifLogin, currentBottonBar, goodsData, pageSize, totalPages, pageIndex } = props.index;
+	const { userName, userLevel, userIntergral, current, ifLogin, avatarUrl, goodsData, pageSize, totalPages, pageIndex, homeBannerData } = props.index;
 
 	useEffect(() => {
 		Taro.getSystemInfo({
@@ -45,6 +43,22 @@ const Index = (props) => {
 				pageSize: 4
 			}
 		})
+		dispatch({
+			type: IndexActions.getHomeBanner,
+		})
+		dispatch({
+			type: IndexActions.update,
+			payload: { currentBottonBar: 0 }
+		})
+		// if(userName && avatarUrl) {
+		// 	dispatch({
+		// 		type: IndexActions.getUserInfo,
+		// 		payload: {
+		// 			image: avatarUrl,
+		// 			name: userName,
+		// 		}
+		// 	})
+		// }
 	}, [])
 
 	useEffect(() => {
@@ -70,57 +84,51 @@ const Index = (props) => {
 		})
 	}
 	const toAssociationPage = () => {
-		Taro.navigateTo({
+		Taro.redirectTo({
 			url: '/pages/association/index'
 		})
 	}
 	const toActivityPage = () => {
-		Taro.navigateTo({
+		Taro.redirectTo({
 			url: '/pages/activity/index'
 		})
 	}
 	const toParadisePage = () => {
-		Taro.navigateTo({
+		Taro.redirectTo({
 			url: '/pages/paradise/index'
 		})
 	}
 	const toDailyPage = () => {
-		Taro.navigateTo({
+		Taro.redirectTo({
 			url: '/pages/daily/index'
 		})
 	}
-
-	const toOtherPage = (index) => {
-		dispatch({
-			type: IndexActions.update,
-			payload: { currentBottonBar: index }
+	const toLevelPage = () => {
+		Taro.redirectTo({
+			url: '/pages/level/index'
 		})
-		switch (index) {
-			case 0:
-				Taro.navigateTo({
-					url: '/pages/activity/index'
-				})
-				break
-			case 1:
-				// Taro.navigateTo({
-				// 	url: '/pages/activity/index'
-				// })
-				break
-			case 2:
-				break
-		}
 	}
 
 	const login = () => {
-		console.log('login')
 		Taro.getUserProfile({
 			desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
 			success: (res) => {
-				console.log(7, res)
 				Taro.setStorageSync('avatarUrl', res.userInfo.avatarUrl)
+				Taro.setStorageSync('userName', res.userInfo.nickName)
 				dispatch({
 					type: IndexActions.update,
-					payload: { ifLogin: true }
+					payload: {
+						ifLogin: true,
+						avatarUrl: res.userInfo.avatarUrl,
+						userName: res.userInfo.nickName,
+					}
+				})
+				dispatch({
+					type: IndexActions.getUserInfo,
+					payload: {
+						image: res.userInfo.avatarUrl,
+						name: 'hiahiaa',
+					}
 				})
 			}
 		})
@@ -151,14 +159,16 @@ const Index = (props) => {
 		return (
 			<View className="index-page">
 				<View className="index-header-wrap">
-					<View className="index-basic-info" style={{backgroundImage: Portrait}}>
+					<View className="index-basic-info">
 						{/* <Image className="portrait-circle" src={Portrait} /> */}
-						<View className="portrait-circle" style={{backgroundImage: `url(${Portrait})`}}>
-							<AtAvatar className="portrait" circle image={Taro.getStorageSync('avatarUrl') || ''}/>
-						</View>
-						<View className="index-basic-text">
-							<Text className="index-username common_display_block">{userName || ''}</Text>
-							<View className="index-userlevel">{getStars()}</View>
+						<View onClick={toLevelPage}>
+							<View className="portrait-circle" style={{backgroundImage: `url(${Portrait})`}}>
+								<AtAvatar className="portrait" circle image={Taro.getStorageSync('avatarUrl') || ''}/>
+							</View>
+							<View className="index-basic-text">
+								<Text className="index-username common_display_block">{userName || 'hiahia'}</Text>
+								<View className="index-userlevel">{getStars()}</View>
+							</View>
 						</View>
 						<AtButton className='see-intergral-btn' type='primary' size='small' circle onClick={toDetail}>
 							<Image className="tianluo-icon" src={Tianluo}/>
@@ -208,20 +218,27 @@ const Index = (props) => {
 				</View>
 				<View className="banner-wrap">
 					<Swiper
+						className="index-banner-swiper"
 						indicatorActiveColor={'#fff'}
 						circular
-						indicatorDots
 						autoplay
 					>
-						<SwiperItem className="swiper-item">
+						{
+							homeBannerData.map((banner, index) => (
+								<SwiperItem className="swiper-item" key={index}>
+									<Image className="banner-image" src={banner.image} />
+								</SwiperItem>
+							))
+						}
+						{/* <SwiperItem className="swiper-item">
 							<Image className="banner-image" src={Banner1} />
-						</SwiperItem>
-						<SwiperItem className="swiper-item">
+						</SwiperItem> */}
+						{/* <SwiperItem className="swiper-item">
 							<Image className="banner-image" src={Banner2} />
 						</SwiperItem>
 						<SwiperItem className="swiper-item">
 							<Image className="banner-image" src={Banner3} />
-						</SwiperItem>
+						</SwiperItem> */}
 					</Swiper>
 				</View>
 				<View className="index-shop-wrap">
@@ -238,10 +255,10 @@ const Index = (props) => {
 							>
 								<View className="scroll-view-wrap">
 									{
-										goodsData.map((goods) => (
+										goodsData.map((goods, index) => (
 											<View
 												className="shop-goods-item"
-												id="shop_goods_item"
+												key={index}
 											>
 												<View className="image-wrap">
 												<Image
@@ -266,14 +283,14 @@ const Index = (props) => {
 										))
 									}
 									{
-										pageIndex === totalPages - 1 ? <View className="shop-bottom-wrap">已经到底了</View> : null
+										pageIndex === totalPages - 1 ? <View className="shop-bottom-wrap"><Image className="shop-bottom-image" src={GreenTianluo}/>没有更多了呦</View> : null
 									}
 								</View>
 								</ScrollView>
 							</View>
 						</AtTabsPane>
 						<AtTabsPane current={current} index={1} >
-							<View style='padding: 100px 50px;background-color: #FAFBFC;text-align: center;' >标签页er的内容</View>
+							<View style='padding: 100px 50px;background-color: #FAFBFC;text-align: center;' >暂未接入～</View>
 						</AtTabsPane>
 					</AtTabs>
 				</View>

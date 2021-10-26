@@ -3,7 +3,7 @@
  * @Autor: Wangxinyu
  * @Date: 2021-10-16 21:17:57
  * @LastEditors: Wangxinyu
- * @LastEditTime: 2021-10-22 08:38:59
+ * @LastEditTime: 2021-10-22 19:49:29
  */
 import * as Request from '@/utils/request';
 
@@ -14,7 +14,14 @@ const associationApi = {
             .then((res) => {
                 return res;
             });
-	}
+	},
+	getBanner () {
+		return Request
+            .get(`/communityBanner`)
+            .then((res) => {
+                return res;
+            });
+	},
 }
 
 export default associationApi;

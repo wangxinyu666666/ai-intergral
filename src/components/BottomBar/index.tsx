@@ -3,7 +3,7 @@
  * @Autor: Wangxinyu
  * @Date: 2021-10-22 13:25:18
  * @LastEditors: Wangxinyu
- * @LastEditTime: 2021-10-22 16:14:54
+ * @LastEditTime: 2021-10-22 20:46:59
  */
 import React from 'react';
 import Taro from '@tarojs/taro'
@@ -34,18 +34,24 @@ const BottomBar = (props) => {
 		})
 		switch (index) {
 			case 0:
-				Taro.navigateTo({
+				Taro.redirectTo({
 					url: '/pages/index/index'
 				})
 				break
 			case 1:
-				Taro.navigateTo({
+				Taro.redirectTo({
 					url: '/pages/activity/index'
 				})
 				break
 			case 2:
+				Taro.redirectTo({
+					url: '/pages/blank/index?showBottomBar=true'
+				})
 				break
 			case 3:
+				Taro.redirectTo({
+					url: '/pages/blank/index?showBottomBar=true'
+				})
 				break
 		}
 	}

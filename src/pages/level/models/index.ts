@@ -1,18 +1,19 @@
 /*
  * @Description: 
  * @Autor: Wangxinyu
- * @Date: 2021-10-20 20:30:26
+ * @Date: 2021-10-22 20:58:57
  * @LastEditors: Wangxinyu
- * @LastEditTime: 2021-10-23 00:06:18
+ * @LastEditTime: 2021-10-22 23:50:58
  */
 import { indexApi } from '@/services/';
 
-export const DailyActions = {
-	update: 'daily/updateState',
+export const LevelActions = {
+	update: 'level/updateState',
+	updateIntergral: 'level/updateIntergral'
 }
 
 export default {
-	namespace: 'daily',
+	namespace: 'level',
 	state: {
 		current: 0
 	},
